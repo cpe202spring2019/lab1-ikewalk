@@ -1,13 +1,20 @@
 # CPE 202 Lab 0
+from math import *
+
 
 # represents a location using name, latitude and longitude
 class Location:
     def __init__(self, name, lat, lon):
-        self.name = name    # string for name of location
-        self.lat = lat      # latitude in degrees (-90 to 90)
-        self.lon = lon      # longitude in degrees (-180 to 180)
+        self.name = name  # string for name of location
+        self.lat = lat  # latitude in degrees (-90 to 90)
+        self.lon = lon  # longitude in degrees (-180 to 180)
 
-# ADD BOILERPLATE HERE (__eq__ and __repr__ functions)
+    def __eq__(self, other):  # Checks if longitude and latitude are equal and if other is a Location object
+        return type(other) == Location and isclose(self.lat, other.lat) and isclose(self.lon, other.lon)
+
+    def __repr__(self):  # Formats representation
+        return "Location(\'" + str(self.name) + '\', ' + str(self.lat) + ', ' + str(self.lon) + ")"
+
 
 def main():
     loc1 = Location("SLO", 35.3, -120.7)
@@ -15,20 +22,21 @@ def main():
     loc3 = Location("SLO", 35.3, -120.7)
     loc4 = loc1
 
-    print("Location 1:",loc1)
-    print("Location 2:",loc2)
-    print("Location 3:",loc3)
-    print("Location 4:",loc4)
+    print("Location 1:", loc1)
+    print("Location 2:", loc2)
+    print("Location 3:", loc3)
+    print("Location 4:", loc4)
 
-    print("\nLocation 1 equals Location 2:",loc1==loc2)
-    print("Location 1 equals Location 3:",loc1==loc3)
-    print("Location 1 equals Location 4:",loc1==loc4)
+    print("\nLocation 1 equals Location 2:", loc1 == loc2)
+    print("Location 1 equals Location 3:", loc1 == loc3)
+    print("Location 1 equals Location 4:", loc1 == loc4)
 
     locations = [loc1, loc2]
     print(loc1 in locations)
     print(loc2 in locations)
     print(loc3 in locations)
     print(loc4 in locations)
+
 
 if __name__ == "__main__":
     main()
