@@ -40,7 +40,7 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(reverse_rec([1]), [1])
         tlist = None
         with self.assertRaises(ValueError):  # used to check for exception
-            max_list_iter(tlist)
+            reverse_rec(tlist)
         str_list = ['s', 't', 'r', 'i', 'n', 'g']
         self.assertEqual(reverse_rec(str_list), ['g', 'n', 'i', 'r', 't', 's'])
 
