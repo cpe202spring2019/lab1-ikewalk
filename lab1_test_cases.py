@@ -30,13 +30,17 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(max_list_iter(m_list), 8)
         self.assertEqual(max_list_iter([8]), 8)
 
+    def test_max_list_iter_neg_list(self):
+        m_list = [-18, -4, -7, -5]
+        self.assertEqual(max_list_iter(m_list), -4)
+
     def test_reverse_rec(self):
         """ Tests reverse_rec with different values, checks against something that it is not equal to, empty list,
          none type, and with a string """
         self.assertEqual(reverse_rec([1, 2, 3]), [3, 2, 1])
         self.assertEqual(reverse_rec([7, 3, 8, 9]), [9, 8, 3, 7])
         self.assertNotEqual(reverse_rec([7, 3, 8, 9]), [3, 8, 9, 7])
-        self.assertEqual(reverse_rec([]), None)
+        self.assertEqual(reverse_rec([]), [])
         self.assertEqual(reverse_rec([1]), [1])
         tlist = None
         with self.assertRaises(ValueError):  # used to check for exception
@@ -64,6 +68,10 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(bin_search(4, 0, 10, [4]), 0)
         self.assertEqual(bin_search(6, 0, 1, [4]), None)
 
+    def test_bin_search_above_below_range(self):
+        list_val = [0, 1, 2, 3, 4, 7, 8, 9, 10]
+        self.assertEqual(bin_search(4, 0, 3, list_val), None)
+        self.assertEqual(bin_search(1, 3, 7, list_val), None)
 
 if __name__ == "__main__":
     unittest.main()

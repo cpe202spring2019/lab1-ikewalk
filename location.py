@@ -10,7 +10,8 @@ class Location:
         self.lon = lon  # longitude in degrees (-180 to 180)
 
     def __eq__(self, other):  # Checks if longitude and latitude are equal and if other is a Location object
-        return type(other) == Location and isclose(self.lat, other.lat) and isclose(self.lon, other.lon)
+        return (type(other) == Location and self.name == other.name and isclose(self.lat, other.lat)
+                and isclose(self.lon, other.lon))
 
     def __repr__(self):  # Formats representation
         return "Location(\'" + str(self.name) + '\', ' + str(self.lat) + ', ' + str(self.lon) + ")"
